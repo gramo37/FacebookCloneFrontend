@@ -111,7 +111,7 @@ export const logoutUser = () => async (dispatch) => {
 
     const link = `${host}/api/v1/logout`;
 
-    const { data } = await axios.get(link, {withCredentials: true});
+    const { data } = await axios.get(link);
 
     console.log(data);
 
