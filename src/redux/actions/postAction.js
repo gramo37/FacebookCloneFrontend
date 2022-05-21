@@ -11,13 +11,15 @@ const {
 } = require("../constants/postConstants");
 const axios = require("axios");
 
+const host = "https://facebook-clone-react-new.herokuapp.com";
+
 export const sendPost = (caption) => async (dispatch) => {
   try {
     dispatch({
       type: REQUIRE_POST,
     });
 
-    const link = `/api/v1/createPost`;
+    const link = `${host}/api/v1/createPost`;
     const {data} = await axios.post(link, {
       caption: caption,
       image: {
@@ -45,7 +47,7 @@ export const getPost = () => async (dispatch) => {
             type: REQUIRE_GET_POST
         })
 
-        const link = `/api/v1/getPosts`;
+        const link = `${host}/api/v1/getPosts`;
         const {data} = await axios.get(link);
 
         dispatch({
@@ -67,7 +69,7 @@ export const addComment = (postId, comment) => async (dispatch) => {
       type: REQUIRE_ADD_COMMENT
     })
 
-    const link = `/api/v1/comment/${postId}`
+    const link = `${host}/api/v1/comment/${postId}`
     const {data} = await axios.post(link, {comment: comment});
 
     dispatch({

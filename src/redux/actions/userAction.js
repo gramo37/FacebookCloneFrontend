@@ -8,7 +8,8 @@ const {
 } = require("../constants/userConstant");
 const axios = require("axios");
 
-const host = "http://localhost:5000";
+const host = "https://facebook-clone-react-new.herokuapp.com";
+// const host = "http://localhost:5000";
 
 const setCookie = (cname, cvalue, exdays) => {
   const d = new Date();
@@ -31,7 +32,7 @@ export const signinUser = (name, email, password) => async (dispatch) => {
       type: REQUIRE_SIGNIN,
     });
 
-    const link = `/api/v1/signup`;
+    const link = `${host}/api/v1/signup`;
     const config = { headers: { "Content-Type": "application/json" } };
 
     const userDetails = {
@@ -62,7 +63,7 @@ export const loginUser = (email, password) => async (dispatch) => {
       type: REQUIRE_LOGIN,
     });
 
-    const link = `/api/v1/login`;
+    const link = `${host}/api/v1/login`;
     const config = { headers: { "Content-Type": "application/json" } };
 
     const userDetails = {
@@ -92,7 +93,7 @@ export const logoutUser = () => async (dispatch) => {
       type: "REQUIRE_LOGOUT",
     });
 
-    const link = `/api/v1/logout`;
+    const link = `${host}/api/v1/logout`;
 
     const { data } = await axios.get(link, {withCredentials: true});
 
@@ -118,7 +119,7 @@ export const loadUser = () => async (dispatch) => {
       type: "REQUIRE_USER"
     })
 
-    const link = `/api/v1/myProfile`;
+    const link = `${host}/api/v1/myProfile`;
     const {data} = await axios.get(link);
     console.log(data)
     dispatch({
